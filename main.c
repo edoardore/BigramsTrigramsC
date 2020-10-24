@@ -1,8 +1,15 @@
 #include <stdio.h>
 #include <dirent.h>
+#include <stdint.h>
+#include <sys/time.h>
+#include <stdint.h>
+#include <inttypes.h>
+
+int64_t currentTimeMillis();
 
 
 int main(void) {
+    int64_t start=currentTimeMillis();
     DIR *dr;
     struct dirent *en;
     char dir[] = "/Users/edore/CLionProjects/BigramsTrigrams/Gutenberg/txt";
@@ -43,6 +50,7 @@ int main(void) {
         }
     }
     closedir(dr);
+    int64_t time=currentTimeMillis()-start;
     for (c0 = 'a'; c0 <= 'z'; c0++) {
         for (c1 = 'a'; c1 <= 'z'; c1++) {
             int n = countBigrams[c0 - 'a'][c1 - 'a'];
@@ -61,5 +69,14 @@ int main(void) {
             }
         }
     }
+    printf("Tempo totale di esecuzione: ms ""%"PRId64"\n", time);
     return 0;
+}
+
+int64_t currentTimeMillis() {
+    struct timeval time;
+    gettimeofday(&time, NULL);
+    int64_t s1 = (int64_t) (time.tv_sec) * 1000;
+    int64_t s2 = (time.tv_usec / 1000);
+    return s1 + s2;
 }
