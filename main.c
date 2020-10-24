@@ -2,7 +2,6 @@
 #include <dirent.h>
 #include <stdint.h>
 #include <sys/time.h>
-#include <stdint.h>
 #include <inttypes.h>
 
 int64_t currentTimeMillis();
