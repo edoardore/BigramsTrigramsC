@@ -26,7 +26,7 @@ Process finished with exit code 0
 ```
 
 ## Librerie utilizzate
-```java
+```c
 #include <stdio.h>
 #include <dirent.h>
 #include <stdint.h>
